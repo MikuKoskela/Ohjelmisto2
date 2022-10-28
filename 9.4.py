@@ -17,32 +17,37 @@ class Auto:
     def __init__(self, rekisteritunnus, huippunopeus):
         self.rekisteritunnus = rekisteritunnus
         self.huippunopeus = huippunopeus
-    def kiihdyta(self, nopeuden_muutos):
-        if nopeuden_muutos == -200:
-            nopeusNyt = 0
-            return nopeusNyt
-        if nopeuden_muutos > 0:
-            nopeusNyt = auto.nopeusNyt + nopeuden_muutos
-            if nopeusNyt > auto.huippunopeus:
-                nopeusNyt = 142
-                return nopeusNyt
-            return nopeusNyt
+        self.nopeus = 0
+        self.kuljettumatka = 0
+
+    def tulosta_tiedot(self):
+        print(f"Rekisteritunnus:{self.rekisteritunnus}  Huippunopeus:{self.huippunopeus}km/h.  Tämänhetkinen nopeus:{self.nopeus}km/h.  Kuljettu matka:{self.kuljettumatka}km.")
+
+
+
+    def kiihdyta(self, tunnit):
+        self.nopeus += tunnit
+        if self.nopeus > self.huippunopeus:
+            self.nopeus = self.huippunopeus
+        if self.nopeus < 0:
+            self.nopeus = 0
     def kulje(self, tunnit):
-        kuljettu_matka = auto.nopeusNyt * tunnit
-        auto.kuljettu_matka = auto.kuljettu_matka + kuljettu_matka
-        return auto.kuljettu_matka
-autot = ["ABC-1","ABC-2","ABC-3","ABC-4","ABC-5","ABC-6","ABC-7","ABC-8","ABC-9","ABC-10"]
-huippunopeus = int(random.randint(100,200))
+        self.kuljettumatka += (tunnit * self.nopeus)
+#auto = Auto("ABC-123", 142) #rekisteritunnus , huippunopeus
+#auto.tulosta_tiedot()
 
-for i in range(0,11):
-    rekisteritunnus = autot[0]
-    auto = Auto(rekisteritunnus, huippunopeus) #rekisteritunnus , huippunopeus
+autot =[]
+for i in range(10): # Joko str(i+1) tai range(1,11)
+    autot.append(Auto("ABC-" + str(i+1), random.randint(100,200)))
 
-auto.nopeusNyt = 60
-auto.kuljettu_matka = 2000
-print(i)
+loppu = False
+while not loppu:
+    for auto in autot:
+        auto.kiihdyta(random.randint(-10,15))
+        auto.kulje(1)
+        if auto.kuljettumatka >= 10000:
+            loppu = True
+for auto in autot:
+    auto.tulosta_tiedot()
 
-print(f"Auton rekisteritunnus on: {auto.rekisteritunnus}.")
-print(f"Auton huippunopeus on: {auto.huippunopeus} km/h.")
-print(f"Auton tämänhetkinen nopeus on: {auto.nopeusNyt} km/h.")
-print(f"Auton kuljettu matka on: {auto.kuljettu_matka} km.")
+
