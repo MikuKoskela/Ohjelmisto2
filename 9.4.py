@@ -50,4 +50,4 @@ while not loppu:
 for auto in autot:
     auto.tulosta_tiedot()
 
-
+#KORJATTU TUNNILLA
