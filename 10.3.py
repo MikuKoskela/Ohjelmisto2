@@ -27,7 +27,6 @@ class Hissi:
                     self.kerros = self.kerros_ylös(hissi_numero)
                 elif self.kerros > haluttu_kerros:
                     self.kerros = self.kerros_alas(hissi_numero)
-
                 if self.kerros == haluttu_kerros:
                     print(f"Hissi {hissi_numero} on saapunut kerrokseen: {self.kerros}")
         else:
@@ -41,7 +40,6 @@ class Talo:
         self.ylin_kerros = ylin_kerros
         self.hissit_lkm = int(hissit_lkm)
         self.hissit = []
-
         for hissi in range(1, (hissit_lkm) + 1):
             self.hissi = Hissi({int(len(self.hissit))}, self.alin_kerros, self.ylin_kerros)
             self.hissit.append(hissi)
