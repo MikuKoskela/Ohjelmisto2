@@ -45,16 +45,20 @@ class Talo:
             self.hissit.append(hissi)
 
     def aja_hissiä(self, hissi_numero, haluttu_kerros):
-        if hissi_numero == 1:
-            Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
-        elif hissi_numero == 2:
-            Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
-        elif hissi_numero == 3:
-            Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
-        elif hissi_numero == 4:
-            Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
-        elif hissi_numero == 5:
-            Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
+
+        while self.hissi.kerros != haluttu_kerros:
+            Hissi.siirry_kerrokseen(self.hissi, hissi_numero, haluttu_kerros)
+
+      #  if hissi_numero == 1:
+       #     Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
+        #elif hissi_numero == 2:
+         #   Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
+        #elif hissi_numero == 3:
+         #   Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
+        #elif hissi_numero == 4:
+         #   Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
+        #elif hissi_numero == 5:
+         #   Hissi.siirry_kerrokseen(t.hissi, hissi_numero, haluttu_kerros)
 
     def palohälytys(self):
         h = int(len(t.hissit))
